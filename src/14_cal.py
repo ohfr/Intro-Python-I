@@ -30,3 +30,26 @@ it should use today’s date to get the month and year.
 import sys
 import calendar
 from datetime import datetime
+
+def getDate(month=0, year=0):
+  date, temp = str(datetime.now()).split(" ")
+
+  yr, mnth, day = date.split("-")
+
+  if len(sys.argv) == 3:
+    if int(sys.argv[1]) > 12:
+      print("Please put month before year")
+    month = sys.argv[1]
+    year = sys.argv[2]
+  elif len(sys.argv) == 2:
+    if int(sys.argv[1]) > 12:
+      print("Please put month before year")
+    month = sys.argv[1]
+    year = yr
+  else:
+    year = yr
+    month =mnth
+
+  print(calendar.month(int(year), int(month)))
+
+getDate()
